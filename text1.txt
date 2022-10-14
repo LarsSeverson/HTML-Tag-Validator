@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Href Attribute Example</title>
+  </head>
+  <body>
+    <h1>Href Attribute Example</h1>
+    <p>
+      <a href="https://go.okstate.edu/undergraduate-academics/majors/computer-science.html">Computer Science Page</a> gives you a brief introduction of Computer Science and why Computer Science program at Oklahoam State University. In addition to that, you can explore the program details by clicking the department website.
+    </p>
+  </body>
+</html>
