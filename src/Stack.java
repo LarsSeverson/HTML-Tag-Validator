@@ -1,15 +1,15 @@
 public class Stack {
 
     // Creating two queue variable to use to form our stack
-    static Queue<Integer> q1 = new Queue<Integer>();
-    static Queue<Integer> q2 = new Queue<Integer>();
+    static Queue<String> q1 = new Queue<String>();
+    static Queue<String> q2 = new Queue<String>();
 
     // To maintain current number of
     // elements
     static int curr_size;
 
     // Push an item onto the stack using push which is used by queue as enqueue and dequeue operations
-    static void push(int x)
+    static void push(String x)
     {
         // Push x first in empty q2
         q2.enqueue(x);
@@ -22,7 +22,7 @@ public class Stack {
         }
 
         // swap the names of two queues
-        Queue<Integer> q = q1;
+        Queue<String> q = q1;
         q1 = q2;
         q2 = q;
     }
@@ -38,7 +38,7 @@ public class Stack {
     }
 
     // Showing the top element of the stack using custom peek operation
-    static int top()
+    static String top()
     {
         return q1.peek();
     }

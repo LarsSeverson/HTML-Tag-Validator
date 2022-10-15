@@ -3,14 +3,14 @@ import java.util.NoSuchElementException;
 public class Queue<T> {
 
     // Method to show first element in queue
-    public int peek() {
+    public String peek() {
         if (first == null)
         {
             throw new NoSuchElementException();
         }
         else
         {
-            return (int) first.item;
+            return (String) first.item;
         }
     }
 
