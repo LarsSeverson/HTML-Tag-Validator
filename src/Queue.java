@@ -1,73 +1,67 @@
-import java.util.NoSuchElementException;
-
 public class Queue<T> {
-
+    private Node front;
+    private Node back;
     private int size;
-
-    // Method to show first element in queue
-    public String peek() {
-        if (first == null)
-        {
-
+    Queue(){
+        front = null;
+        size = 0;
+    }
+    public void enqueue(T value){
+        Node newNode = new Node(value);
+        if (front == null){
+            front = newNode;
+            back = newNode;
+            size++;
+            return;
         }
-        else
-        {
-            return (String) first.item;
+        Node current = front;
+        while(current.next != null){
+            current = current.next;
+        }
+        current.next = newNode;
+        back = newNode;
+        size++;
+    }
+    public T dequeue(){
+        T temp = front.value;
+        front = front.next;
+        return temp;
+    }
+    public T peek(){
+      if (!isEmpty()){
+          return front.value;
+      }
+      return null;
+    }
+
+    public T peekBack(){
+        if (back != null){
+            return back.value;
         }
         return null;
     }
 
-    public int size() {
+    public boolean isEmpty(){
+        return (front == null);
+    }
+    public int getSize() {
         return size;
     }
 
-    // Node class for list items and next item
-    private class Node{
-        T item;
+    private class Node {
+        T value;
         Node next;
-
-
-        Node(T t){
-            item = t;
-            next = null;
+        Node(T value){
+            this.value = value;
+            this.next = null;
+        }
+    }
+    public void display(){
+        Node temp = front;
+        while(temp != null){
+            System.out.println(temp.value);
+            temp = temp.next;
         }
     }
 
-    private Node first, last;
-
-    Queue (){
-        first = null;
-        last = null;
-
-    }
-
-    // If it's empty then return null
-    public boolean isEmpty(){
-        return first == null;
-    }
-
-    // Adding items to queue
-    public void enqueue(T t){
-        Node oldLast = last;
-        last = new Node(t);
-        size++;
-        if (isEmpty()) first = last;
-        else   oldLast.next = last;
-    }
-
-    // Removing items from queue
-    public T dequeue(){
-        if (isEmpty())
-            return  null;
-
-        if (first == last){
-            T t = (T) first.item;
-            first = last = null;
-            return  t;
-        }
-
-        T t = (T) first.item;
-        first = first.next;
-        return t;
-    }
 }

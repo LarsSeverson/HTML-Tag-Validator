@@ -1,46 +1,40 @@
-public class Stack<S> {
+public class Stack<T> {
 
     // Creating two queue variable to use to form our stack
-    static Queue<String> q1 = new Queue<String>();
-    static Queue<String> q2 = new Queue<String>();
+    private final Queue<String> q1 = new Queue<>();
+    private final Queue<String> q2 = new Queue<>();
 
     // To maintain current number of
     // elements
-    static int curr_size;
+    private static int curr_size = 0;
 
     // Push an item onto the stack using push which is used by queue as enqueue and dequeue operations
-    static void push(String x)
+    public void push(String x)
     {
-        // Push x first in empty q2
-        q2.enqueue(x);
-
-        // Push all the remaining
-        // elements in q1 to q2.
-        while (!q1.isEmpty()) {
-            q2.enqueue(q1.peek());
-            q1.dequeue();
+        if(q1.isEmpty()){
+            q1.enqueue(x);
+            curr_size++;
+            return;
         }
-
-        // swap the names of two queues
-        Queue<String> q = q1;
-        q1 = q2;
-        q2 = q;
+        // This is such a waste of time
+        // Queue is not needed for this problem
+        while(!q1.isEmpty()){
+            q2.enqueue(q1.dequeue());
+        }
+        q1.enqueue(x);
+        while(!q2.isEmpty()){
+            q1.enqueue(q2.dequeue());
+        }
+        curr_size++;
     }
 
     // Remove top element on stack using dequeue as long as it's not empty
-    static String pop()
-    {
-
-        // if no elements are there in q1
-        if (q1.isEmpty())
-            return null;
-        q1.dequeue();
-        return null;
+    public String pop(){
+        return q1.dequeue();
     }
 
     // Showing the top element of the stack using custom peek operation
-    static String top()
-    {
+    public String top() {
         return q1.peek();
     }
 
@@ -48,11 +42,15 @@ public class Stack<S> {
         return q1.isEmpty();
     }
 
-    public String peek() {
-        return q1.peek();
-    }
 
     public int size() {
-        return q1.size();
+        return q1.getSize();
     }
+    public void show(){
+        System.out.println("Q1");
+        q1.display();
+        System.out.println("Q2");
+        q2.display();
+    }
+
 }

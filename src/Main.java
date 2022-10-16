@@ -1,32 +1,15 @@
 import java.io.*;
-import java.util.Scanner;
+import java.util.Objects;
 
 public class Main {
+    public static final Tester theTest = new Tester();
+
     public static void main(String[] args) throws IOException {
-
         String fileName = "text1.txt";
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)))) {
-
-            // Creating new stack with our custom double Queue stack
-            Stack stack = new Stack();
-
-            // Reading the file and entering it into the stack line by line
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                stack.push(line);
-            }
-
-            // Pop the values from the stack and print them
-            while (stack.top() != null) {
-                System.out.println(stack.top());
-                stack.pop();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        theTest.validation(new BufferedReader(new InputStreamReader(new FileInputStream(fileName))));
     }
 }
+
 
     /*
     Correct output
