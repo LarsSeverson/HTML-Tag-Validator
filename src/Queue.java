@@ -6,12 +6,13 @@ public class Queue<T> {
     public String peek() {
         if (first == null)
         {
-            throw new NoSuchElementException();
+
         }
         else
         {
             return (String) first.item;
         }
+        return null;
     }
 
     // Node class for list items and next item

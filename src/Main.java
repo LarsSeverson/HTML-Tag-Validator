@@ -1,39 +1,40 @@
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        String htmlSnippet = "<!DOCTYPE html>\n" +
-                "<html>\n" +
-                "  <head>\n" +
-                "    <title>Href Attribute Example</title>\n" +
-                "  </head>\n" +
-                "  <body>\n" +
-                "    <h1>Href Attribute Example</h1>\n" +
-                "    <p>\n" +
-                "      <a href=\"https://go.okstate.edu/undergraduate-academics/majors/computer-science.html\">Computer Science Page</a> gives you a brief introduction of Computer Science and why Computer Science program at Oklahoam State University. In addition to that, you can explore the program details by clicking the department website.\n" +
-                "    </p>\n" +
-                "  </body>\n" +
-                "</html>";
+        String fileName = "text1.txt";
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)))) {
 
+            // Creating new stack with our custom double Queue stack
+            Stack stack = new Stack();
 
-        Stack s = new Stack();
-        s.push("1");
-        s.push("2");
-        s.push("3");
-        s.push("4");
-        s.push("5");
+            // Reading the file and entering it into the stack line by line
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                stack.push(line);
+            }
 
-        System.out.println(s.top());
-        s.pop();
-        System.out.println(s.top());
-        s.pop();
-        System.out.println(s.top());
-        s.pop();
-        System.out.println(s.top());
-        s.pop();
-        System.out.println(s.top());
+            // Pop the values from the stack and print them
+            while (stack.top() != null) {
+                System.out.println(stack.top());
+                stack.pop();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    /*
+    Correct output
+    System.out.println("Congratulations... The given HTML file meets all the tag rules.. ");
+     */
+
+    /*
+    Incorrect output
+        System.out.println("Oops... There is a problem..")
+        System.out.println(s.ErrorLine());
+     */
 }
