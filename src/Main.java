@@ -26,6 +26,7 @@ public class Main {
             e.printStackTrace();
         }
     }
+}
 
     /*
     Correct output
@@ -37,4 +38,4 @@ public class Main {
         System.out.println("Oops... There is a problem..")
         System.out.println(s.ErrorLine());
      */
-}
+

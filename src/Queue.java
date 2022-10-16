@@ -2,6 +2,8 @@ import java.util.NoSuchElementException;
 
 public class Queue<T> {
 
+    private int size;
+
     // Method to show first element in queue
     public String peek() {
         if (first == null)
@@ -15,10 +17,15 @@ public class Queue<T> {
         return null;
     }
 
+    public int size() {
+        return size;
+    }
+
     // Node class for list items and next item
     private class Node{
         T item;
         Node next;
+
 
         Node(T t){
             item = t;
@@ -31,6 +38,7 @@ public class Queue<T> {
     Queue (){
         first = null;
         last = null;
+
     }
 
     // If it's empty then return null
@@ -42,6 +50,7 @@ public class Queue<T> {
     public void enqueue(T t){
         Node oldLast = last;
         last = new Node(t);
+        size++;
         if (isEmpty()) first = last;
         else   oldLast.next = last;
     }

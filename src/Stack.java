@@ -1,4 +1,4 @@
-public class Stack {
+public class Stack<S> {
 
     // Creating two queue variable to use to form our stack
     static Queue<String> q1 = new Queue<String>();
@@ -28,18 +28,31 @@ public class Stack {
     }
 
     // Remove top element on stack using dequeue as long as it's not empty
-    static void pop()
+    static String pop()
     {
 
         // if no elements are there in q1
         if (q1.isEmpty())
-            return;
+            return null;
         q1.dequeue();
+        return null;
     }
 
     // Showing the top element of the stack using custom peek operation
     static String top()
     {
         return q1.peek();
+    }
+
+    public boolean isEmpty() {
+        return q1.isEmpty();
+    }
+
+    public String peek() {
+        return q1.peek();
+    }
+
+    public int size() {
+        return q1.size();
     }
 }
