@@ -5,7 +5,7 @@ public class Main {
     public static final Tester theTest = new Tester();
 
     public static void main(String[] args) throws IOException {
-        String fileName = "text1.txt";
+        String fileName = "text2.txt";
         theTest.validation(new BufferedReader(new InputStreamReader(new FileInputStream(fileName))));
     }
 }
